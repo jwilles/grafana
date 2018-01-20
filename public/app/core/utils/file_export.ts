@@ -59,6 +59,9 @@ export function exportTableDataToCsv(table, excel = false) {
   // process data
   _.each(table.rows, function(row) {
     _.each(row, function(value) {
+      if (value.indexOf(';') > -1) {
+        value = '"' + value + '"';
+      }
       text += value + ';';
     });
     text += '\n';
